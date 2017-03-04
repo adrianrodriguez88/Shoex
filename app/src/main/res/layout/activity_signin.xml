@@ -11,6 +11,9 @@
     android:orientation="vertical"
     tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignIn">
 
+    <include android:id="@+id/appbar"
+        layout="@layout/darktoolbar" />
+
     <TextView
         android:text="Ingresa tus datos de login"
         android:layout_width="wrap_content"
