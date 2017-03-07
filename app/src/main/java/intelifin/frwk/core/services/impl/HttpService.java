@@ -21,25 +21,87 @@ import intelifin.frwk.core.services.exception.HttpServiceException;
 public class HttpService implements IHttpService {
 
     private final String USER_AGENT = "Mozilla/5.0";
-    /*
-    public static void main(String[] args) throws HttpServiceException, Exception {
 
-        HttpService http = new HttpService();
+    public JSONObject post(String _endpoint, TreeMap<String, String> _headers, JSONObject _payload) throws HttpServiceException {
+        HttpsURLConnection conn = null;
+        BufferedReader reader = null;
+        int _responseCode = -1;
+        System.out.println("@HttpService: 1");
 
-        //System.out.println("Testing 1 - Send Http GET request");
-        //http.sendGet();
+        try {
+            URL url = new URL(_endpoint);
 
-        TreeMap<String, String> _headers = new TreeMap<String, String>();
+            conn = (HttpsURLConnection) url.openConnection();
+            System.out.println("@HttpService: 2");
 
-        JSONObject _payload = new JSONObject();
-        _payload.put("id", "33");
-        _payload.put("search", "j");
+            //conn.setConnectTimeout(60);
 
-        JSONObject _json = http.post("http://app.cpeguide.com/findfriends", _headers, _payload);
+            if (_headers != null) {
+                for (java.util.Map.Entry<String, String> e : _headers.entrySet()) {
+                    conn.setRequestProperty(e.getKey(), e.getValue());
+                }
+            }
+            System.out.println("@HttpService: 3");
 
-        System.out.println(_json.toString());
+            conn.setRequestProperty("Content-Type", "application/json");
+           /* conn.setRequestProperty("Connection", "close");*/
 
-    }*/
+           /* byte[] requestString;
+            requestString = (url != null) ? url.toString().getBytes("utf-8") : "".getBytes();
+            conn.setRequestProperty("Content-Length", "" + requestString.length + 1);*/
+
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+            System.out.println("@HttpService: 4");
+
+            JSONObject _data = new JSONObject();
+            _data.put("data", _payload);
+
+            java.io.OutputStream os = conn.getOutputStream();
+            java.io.BufferedWriter writer = new java.io.BufferedWriter(
+                    new java.io.OutputStreamWriter(os, "UTF-8"));
+            writer.write(_data.toString());
+            writer.flush();
+            writer.close();
+            os.close();
+
+            conn.connect();
+
+            System.out.println("@HttpService: 5");
+
+            _responseCode = conn.getResponseCode();
+
+            if (_responseCode >= 200 && _responseCode <= 399){
+                java.io.InputStream inputStream = conn.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    // Nothing to do.
+                    throw new HttpServiceException("The inputstream is null", _responseCode);
+                }
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line + "\n");
+                }
+
+                System.out.println(buffer.toString());
+                return new JSONObject(buffer.toString());
+            }
+
+            throw new HttpServiceException("", _responseCode);
+        }
+        catch (Exception e) {
+            throw new HttpServiceException(e.getMessage(), _responseCode);
+        }
+        finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+    }
 
     @Override
     public JSONObject get(String _endpoint, TreeMap<String, String> _headers) throws HttpServiceException {
@@ -49,11 +111,10 @@ public class HttpService implements IHttpService {
             URL obj = new URL(_endpoint);
             HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
-            // optional default is GET
             con.setRequestMethod("GET");
 
             //add request header
-            /*con.setRequestProperty("User-Agent", USER_AGENT);*/
+            //con.setRequestProperty("User-Agent", USER_AGENT);
             con.setConnectTimeout(60);
 
             if (_headers != null) {
@@ -85,7 +146,6 @@ public class HttpService implements IHttpService {
                 }
                 in.close();
 
-                //print result
                 System.out.println(response.toString());
 
                 return new JSONObject(response.toString());
@@ -98,7 +158,7 @@ public class HttpService implements IHttpService {
         }
     }
 
-    @Override
+    /*@Override
     public JSONObject post(String _endpoint, TreeMap<String, String> _headers, JSONObject _payload) throws HttpServiceException {
         int responseCode = -1;
         try {
@@ -108,8 +168,8 @@ public class HttpService implements IHttpService {
 
             //add reuqest header
             con.setRequestMethod("POST");
-            /*con.setRequestProperty("User-Agent", USER_AGENT);
-            con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");*/
+            *//*con.setRequestProperty("User-Agent", USER_AGENT);
+            con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");*//*
 
             con.setConnectTimeout(60);
             System.out.println("2");
@@ -166,6 +226,6 @@ public class HttpService implements IHttpService {
         catch(Exception e){
             throw new HttpServiceException(e.getMessage(), responseCode);
         }
-    }
+    }*/
 
 }

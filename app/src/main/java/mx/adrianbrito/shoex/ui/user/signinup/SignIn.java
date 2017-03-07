@@ -33,7 +33,7 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
+                    /*java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
                     _headers.put("Authorization", "key=AIzaSyC4AcCjPMiFqCymqAMNT1QLlMuJZx2pWFM");
 
                     org.json.JSONObject _payload = new org.json.JSONObject();
@@ -44,7 +44,19 @@ public class SignIn extends AppCompatActivity {
 
                     org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://gcm-http.googleapis.com/gcm/send", _headers, _payload);
 
-                    System.out.println(_json.toString());
+                    System.out.println(_json.toString());*/
+
+                    java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
+                    _headers.put("albo-tx", "deeplink@1:send");
+                    _headers.put("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
+                    _headers.put("albo-role", "albo::role::common-user");
+
+                    org.json.JSONObject _payload = new org.json.JSONObject();
+                    _payload.put("email", "a_brito@outlook.com");
+                    _payload.put("phone", "9818187588");
+                    _payload.put("cmd", "reinstall");
+
+                    org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://mi.albo.mx/v1/iop/selfservice", _headers, _payload);
                 }
                 catch(Exception e){
                     System.out.println(e.getMessage());
