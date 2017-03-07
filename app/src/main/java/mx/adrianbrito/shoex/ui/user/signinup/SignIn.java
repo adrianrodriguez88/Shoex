@@ -46,7 +46,7 @@ public class SignIn extends AppCompatActivity {
 
                     System.out.println(_json.toString());*/
 
-                    java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
+                   /* java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
                     _headers.put("albo-tx", "deeplink@1:send");
                     _headers.put("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
                     _headers.put("albo-role", "albo::role::common-user");
@@ -56,7 +56,11 @@ public class SignIn extends AppCompatActivity {
                     _payload.put("phone", "9818187588");
                     _payload.put("cmd", "reinstall");
 
-                    org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://mi.albo.mx/v1/iop/selfservice", _headers, _payload);
+                    org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://mi.albo.mx/v1/iop/selfservice", _headers, _payload);*/
+
+                    intelifin.frwk.core.services.impl.HttpService obj = new intelifin.frwk.core.services.impl.HttpService();
+
+                    obj.post();
                 }
                 catch(Exception e){
                     System.out.println(e.getMessage());

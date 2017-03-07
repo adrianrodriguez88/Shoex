@@ -22,7 +22,109 @@ public class HttpService implements IHttpService {
 
     private final String USER_AGENT = "Mozilla/5.0";
 
-    public JSONObject post(String _endpoint, TreeMap<String, String> _headers, JSONObject _payload) throws HttpServiceException {
+    public JSONObject post(String url, TreeMap<String, String> _headers, JSONObject _payload) throws HttpServiceException{
+        throw new HttpServiceException("", -1);
+    }
+
+    public String post(String... params) {
+        // These two need to be declared outside the try/catch
+        // so that they can be closed in the finally block.
+        HttpsURLConnection urlConnection = null;
+        BufferedReader reader = null;
+
+        // Will contain the raw JSON response as a string.
+        String forecastJsonStr = null;
+
+        try {
+            // Construct the URL for the OpenWeatherMap query
+            // Possible parameters are avaiable at OWM's forecast API page, at
+            // http://openweathermap.org/API#forecast
+            URL url = new URL("https://mi.albo.mx/v1/iop/selfservice");
+
+            // Create the request to OpenWeatherMap, and open the connection
+            urlConnection = (HttpsURLConnection) url.openConnection();
+
+                /*
+                * "headers" : {
+                       "Content-Type":"application/json",
+                       "albo-tx": "deeplink@1:send",
+                       "albo-identity": "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF",
+                       "albo-role": "albo::role::common-user"
+                   }
+                * */
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("albo-tx", "deeplink@1:send");
+            urlConnection.setRequestProperty("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
+            urlConnection.setRequestProperty("albo-role", "albo::role::common-user");
+
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+
+            JSONObject bodyJson = new JSONObject();
+            JSONObject dataJson = new JSONObject();
+            //     "data" : {email:email, phone:phone, cmd:"reinstall"}
+            dataJson.put("email",params[0]);
+            dataJson.put("phone",params[1]);
+            dataJson.put("cmd","reinstall");
+            bodyJson.put("data",dataJson);
+            String body = bodyJson.toString();
+
+            java.io.OutputStream os = urlConnection.getOutputStream();
+            java.io.BufferedWriter writer = new java.io.BufferedWriter(
+                    new java.io.OutputStreamWriter(os, "UTF-8"));
+            writer.write(body);
+            writer.flush();
+            writer.close();
+            os.close();
+
+            urlConnection.connect();
+
+            // Read the input stream into a String
+            java.io.InputStream inputStream = urlConnection.getInputStream();
+            StringBuffer buffer = new StringBuffer();
+            if (inputStream == null) {
+                // Nothing to do.
+                return null;
+            }
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
+                // But it does make debugging a *lot* easier if you print out the completed
+                // buffer for debugging.
+                buffer.append(line + "\n");
+            }
+
+            if (buffer.length() == 0) {
+                // Stream was empty.  No point in parsing.
+                return null;
+            }
+            forecastJsonStr = buffer.toString();
+
+            System.out.println(forecastJsonStr);
+            return forecastJsonStr;
+
+        } catch (Exception e) {
+            // If the code didn't successfully get the weather data, there's no point in attemping
+            // to parse it.
+            return null;
+        } finally{
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (final java.io.IOException e) {
+
+                }
+            }
+        }
+    }
+
+    /*public JSONObject post(String _endpoint, TreeMap<String, String> _headers, JSONObject _payload) throws HttpServiceException {
         HttpsURLConnection conn = null;
         BufferedReader reader = null;
         int _responseCode = -1;
@@ -44,11 +146,11 @@ public class HttpService implements IHttpService {
             System.out.println("@HttpService: 3");
 
             conn.setRequestProperty("Content-Type", "application/json");
-           /* conn.setRequestProperty("Connection", "close");*/
+           *//* conn.setRequestProperty("Connection", "close");*//*
 
-           /* byte[] requestString;
+           *//* byte[] requestString;
             requestString = (url != null) ? url.toString().getBytes("utf-8") : "".getBytes();
-            conn.setRequestProperty("Content-Length", "" + requestString.length + 1);*/
+            conn.setRequestProperty("Content-Length", "" + requestString.length + 1);*//*
 
             conn.setRequestMethod("POST");
             conn.setDoInput(true);
@@ -91,7 +193,7 @@ public class HttpService implements IHttpService {
                 return new JSONObject(buffer.toString());
             }
 
-            throw new HttpServiceException("", _responseCode);
+            throw new HttpServiceException("The execution shouldnt be here", _responseCode);
         }
         catch (Exception e) {
             throw new HttpServiceException(e.getMessage(), _responseCode);
@@ -101,7 +203,7 @@ public class HttpService implements IHttpService {
                 conn.disconnect();
             }
         }
-    }
+    }*/
 
     @Override
     public JSONObject get(String _endpoint, TreeMap<String, String> _headers) throws HttpServiceException {
