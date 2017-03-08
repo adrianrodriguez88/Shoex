@@ -10,4 +10,69 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
+    <ScrollView
+        android:id="@+id/scrollview_signup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="60dp">
+
+        <LinearLayout
+            android:id="@+id/form_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <AutoCompleteTextView
+                    android:id="@+id/txtGname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="Nombre(s)" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- android:imeActionId="@+id/login"
+             android:imeActionLabel="@string/action_sign_in_short"
+             android:imeOptions="actionUnspecified"
+             -->
+            <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/txtFname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:hint="Apellido Paterno" />
+        </android.support.design.widget.TextInputLayout>
+
+            <!-- android:imeActionId="@+id/login" -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/txtSFname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
+                android:hint="Apellido Materno" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAccept"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Aceptar"
+            android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
