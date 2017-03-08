@@ -40,8 +40,7 @@ public class SignIn extends AppCompatActivity {
         txtUser = (EditText) findViewById(R.id.txtUser);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnSend = (Button) findViewById(R.id.btnSend);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        this.initToolbar();
 
         btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -86,6 +85,21 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
+
+    public void initToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Sign In");
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_toolbar_backarrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SignIn.super.finish();
+            }
+        });
+    }
+
 
 
 }
