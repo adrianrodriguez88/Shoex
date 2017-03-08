@@ -27,6 +27,7 @@ import mx.adrianbrito.shoex.R;
 
 public class SignIn extends AppCompatActivity {
 
+    private View scrollView;
     private EditText txtUser;
     private EditText txtPassword;
     private Button btnSend;
@@ -40,6 +41,7 @@ public class SignIn extends AppCompatActivity {
         txtUser = (EditText) findViewById(R.id.txtUser);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnSend = (Button) findViewById(R.id.btnSend);
+        scrollView = findViewById(R.id.scrollview_signin);
         this.initToolbar();
 
         btnSend.setOnClickListener(new View.OnClickListener(){

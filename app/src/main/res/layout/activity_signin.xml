@@ -10,7 +10,55 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar" />
 
-    <TextView
+    <ScrollView
+        android:id="@+id/scrollview_signin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="60dp">
+
+        <LinearLayout
+            android:id="@+id/form_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/txtUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="Usuario" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textPassword"
+                    android:maxLines="1"
+                    android:hint="Password" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSend"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Enviar"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--<TextView
         android:text="Ingresa tus datos de login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Send"
-        android:textStyle="bold" />
+        android:textStyle="bold" />-->
 
 
 </LinearLayout>
