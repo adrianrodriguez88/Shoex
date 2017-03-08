@@ -17,6 +17,7 @@ public class SignUp extends AppCompatActivity {
     private EditText txtSFname;
     private View scrollView;
     private Button btnAccept;
+    private EditText txtBdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class SignUp extends AppCompatActivity {
         txtGname = (EditText) findViewById(R.id.txtGname);
         txtFname = (EditText) findViewById(R.id.txtFname);
         txtSFname = (EditText) findViewById(R.id.txtSFname);
+        //txtBdate = (EditText) findViewById(R.id.txtBdate);
 
         scrollView = findViewById(R.id.scrollview_signup);
 

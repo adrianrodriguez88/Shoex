@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_signup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignUp">
+    android:orientation="vertical"
+    >
+    <!--xmlns:tools="http://schemas.android.com/tools"
+    tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignUp"-->
 
     <include
         layout="@layout/toolbar"
@@ -14,13 +16,13 @@
         android:id="@+id/scrollview_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="60dp">
+        >
 
         <LinearLayout
             android:id="@+id/form_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -29,6 +31,8 @@
                     android:id="@+id/txtGname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/sym_action_email"
+                    android:drawablePadding="20dp"
                     android:inputType="text"
                     android:maxLines="1"
                     android:hint="Nombre(s)" />
@@ -45,6 +49,8 @@
                 android:id="@+id/txtFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_email"
+                android:drawablePadding="20dp"
                 android:inputType="text"
                 android:maxLines="1"
                 android:hint="Apellido Paterno" />
@@ -58,10 +64,19 @@
                 android:id="@+id/txtSFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/sym_action_email"
+                android:drawablePadding="20dp"
                 android:inputType="text"
                 android:maxLines="1"
                 android:hint="Apellido Materno" />
         </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TextInputLayout>
+
 
         <Button
             android:id="@+id/btnAccept"
@@ -75,4 +90,4 @@
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>
