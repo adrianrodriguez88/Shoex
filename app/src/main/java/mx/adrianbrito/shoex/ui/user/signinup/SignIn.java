@@ -29,8 +29,8 @@ public class SignIn extends AppCompatActivity {
 
     private EditText txtUser;
     private EditText txtPassword;
-    private Toolbar toolbar;
     private Button btnSend;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,9 @@ public class SignIn extends AppCompatActivity {
 
         txtUser = (EditText) findViewById(R.id.txtUser);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
-        /*toolbar = (Toolbar) findViewById(R.id.navbar);
-        setSupportActionBar(toolbar);*/
         btnSend = (Button) findViewById(R.id.btnSend);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -101,85 +101,80 @@ public class SignIn extends AppCompatActivity {
 
     @Override
     protected String doInBackground(String... params) {
-        // These two need to be declared outside the try/catch
-        // so that they can be closed in the finally block.
-        HttpsURLConnection urlConnection = null;
+
+        HttpsURLConnection conn = null;
         BufferedReader reader = null;
 
-        // Will contain the raw JSON response as a string.
-        String forecastJsonStr = null;
+        String str = null;
+        int _responseCode = -1;
 
         try {
-            // Construct the URL for the OpenWeatherMap query
-            // Possible parameters are avaiable at OWM's forecast API page, at
-            // http://openweathermap.org/API#forecast
+
             URL url = new URL("https://mi.albo.mx/v1/iop/selfservice");
 
-            // Create the request to OpenWeatherMap, and open the connection
-            urlConnection = (HttpsURLConnection) url.openConnection();
+            conn = (HttpsURLConnection) url.openConnection();
 
-            urlConnection.setRequestProperty("Content-Type", "application/json");
-            urlConnection.setRequestProperty("albo-tx", "deeplink@1:send");
-            urlConnection.setRequestProperty("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
-            urlConnection.setRequestProperty("albo-role", "albo::role::common-user");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("albo-tx", "deeplink@1:send");
+            conn.setRequestProperty("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
+            conn.setRequestProperty("albo-role", "albo::role::common-user");
 
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
 
-            JSONObject bodyJson = new JSONObject();
-            JSONObject dataJson = new JSONObject();
-            //     "data" : {email:email, phone:phone, cmd:"reinstall"}
-            dataJson.put("email",params[0]);
-            dataJson.put("phone",params[1]);
-            dataJson.put("cmd","reinstall");
-            bodyJson.put("data",dataJson);
-            String body = bodyJson.toString();
+            JSONObject _data = new JSONObject();
+            JSONObject _payload = new JSONObject();
 
-            OutputStream os = urlConnection.getOutputStream();
+            _payload.put("email",params[0]);
+            _payload.put("phone",params[1]);
+            _payload.put("cmd","reinstall");
+            _data.put("data", _payload);
+
+            OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
-            writer.write(body);
+            writer.write(_data.toString());
             writer.flush();
             writer.close();
             os.close();
 
-            urlConnection.connect();
+            conn.connect();
 
-            // Read the input stream into a String
-            InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
-            if (inputStream == null) {
-                // Nothing to do.
-                return null;
+            if (_responseCode >= 200 && _responseCode <= 399){
+                // Read the input stream into a String
+                InputStream inputStream = conn.getInputStream();
+                StringBuffer buffer = new StringBuffer();
+                if (inputStream == null) {
+                    return null;
+                }
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line + "\n");
+                }
+
+                if (buffer.length() == 0) {
+                    return null;
+                }
+                str = buffer.toString();
+
+                System.out.println(str);
+
+                return str;
             }
-            reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Since it's JSON, adding a newline isn't necessary (it won't affect parsing)
-                // But it does make debugging a *lot* easier if you print out the completed
-                // buffer for debugging.
-                buffer.append(line + "\n");
-            }
-
-            if (buffer.length() == 0) {
-                /*Log.i("info","RETURNING NULL 1");*/
-                // Stream was empty.  No point in parsing.
-                return null;
-            }
-            forecastJsonStr = buffer.toString();
-
-            System.out.println(forecastJsonStr);
-            return forecastJsonStr;
-
-        } catch (Exception e) {
+            throw new Exception("The execution should not be here");
+        }
+        catch (Exception e) {
             System.out.println("@Exception1: "+e.getMessage());
             e.printStackTrace();
             return null;
-        } finally{
-            if (urlConnection != null) {
-                urlConnection.disconnect();
+        }
+        finally {
+            if (conn != null) {
+                conn.disconnect();
             }
             if (reader != null) {
                 try {
@@ -187,7 +182,6 @@ public class SignIn extends AppCompatActivity {
                 } catch (final IOException e) {
                     System.out.println("@Exception2: "+e.getMessage());
                     e.printStackTrace();
-                    /*Log.e("PlaceholderFragment", "Error closing stream", e);*/
                 }
             }
         }

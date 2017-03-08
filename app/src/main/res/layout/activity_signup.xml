@@ -10,4 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignUp">
 
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
 </RelativeLayout>

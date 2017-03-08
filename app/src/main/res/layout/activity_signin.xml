@@ -6,8 +6,9 @@
     android:orientation="vertical">
     <!--tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignIn"-->
 
-    <!--<include android:id="@+id/navbar"
-        layout="@layout/darktoolbar" />-->
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
 
     <TextView
         android:text="Ingresa tus datos de login"
