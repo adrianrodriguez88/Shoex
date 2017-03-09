@@ -8,9 +8,9 @@
     <!--xmlns:tools="http://schemas.android.com/tools"
     tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignUp"-->
 
-    <include
+    <!--<include
         layout="@layout/toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar" />-->
 
     <ScrollView
         android:id="@+id/scrollview_signup"

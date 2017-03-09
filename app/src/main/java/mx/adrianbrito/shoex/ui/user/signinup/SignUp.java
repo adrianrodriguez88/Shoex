@@ -23,7 +23,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        this.initToolbar();
+        /*this.initToolbar();*/
         txtGname = (EditText) findViewById(R.id.txtGname);
         txtFname = (EditText) findViewById(R.id.txtFname);
         txtSFname = (EditText) findViewById(R.id.txtSFname);
@@ -34,7 +34,7 @@ public class SignUp extends AppCompatActivity {
         btnAccept = (Button) findViewById(R.id.btnAccept);
     }
 
-    public void initToolbar() {
+    /*public void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Sign Up");
         setSupportActionBar(toolbar);
@@ -46,5 +46,5 @@ public class SignUp extends AppCompatActivity {
                 SignUp.super.finish();
             }
         });
-    }
+    }*/
 }

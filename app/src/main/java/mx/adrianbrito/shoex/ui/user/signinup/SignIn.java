@@ -1,6 +1,7 @@
 package mx.adrianbrito.shoex.ui.user.signinup;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -42,7 +43,7 @@ public class SignIn extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         btnSend = (Button) findViewById(R.id.btnSend);
         scrollView = findViewById(R.id.scrollview_signin);
-        this.initToolbar();
+        /*this.initToolbar();*/
 
         btnSend.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -77,8 +78,13 @@ public class SignIn extends AppCompatActivity {
 
                     obj.post(new String[]{"a_brito@outlook.com", "9818187588"});*/
 
-                    android.os.AsyncTask _async = new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
+                    //android.os.AsyncTask _async = new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
 
+                    Intent intent =
+                            new Intent(mx.adrianbrito.shoex.ui.user.signinup.SignIn.this,
+                                    mx.adrianbrito.shoex.ui.catalog.BankSelector.class);
+
+                    startActivity(intent);
 
                 }
                 catch(Exception e){
@@ -88,7 +94,7 @@ public class SignIn extends AppCompatActivity {
         });
     }
 
-    public void initToolbar() {
+    /*public void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Sign In");
         setSupportActionBar(toolbar);
@@ -100,7 +106,7 @@ public class SignIn extends AppCompatActivity {
                 SignIn.super.finish();
             }
         });
-    }
+    }*/
 
 
 

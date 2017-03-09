@@ -26,8 +26,8 @@ public class Init extends AppCompatActivity {
         imgMain = (ImageView) findViewById(R.id.imgMain);
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        /*toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
 
         btnSignIn.setOnClickListener(new View.OnClickListener(){
             @Override

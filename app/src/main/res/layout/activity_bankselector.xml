@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_bankselector"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0dp"
+    card_view:contentPaddingLeft="10dp"
+    card_view:contentPaddingRight="10dp"
+    card_view:paddingEnd="10dp"
+    card_view:paddingStart="10dp">
+    <!--tools:context="mx.adrianbrito.shoex.ui.user.mx.adrianbrito.shoex.ui.catalog.BankSelector"-->
+
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10sp">
+
+        <!-- Title -->
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/txtRoundImage"
+            android:layout_toRightOf="@+id/txtRoundImage"
+            android:text="Generic Title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <!-- Initials -->
+        <View
+            android:id="@+id/viewSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_below="@+id/txtRoundImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/txtRoundImage"
+            android:background="@color/colorAccent"
+            />
+
+        <TextView
+            android:id="@+id/txtRoundImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/round_textview"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Initials"
+            android:textSize="24sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_init"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="#f4e3ad"
+tools:context="mx.adrianbrito.shoex.ui.catalog.BankSelector">
+
+<include
+    layout="@layout/toolbar"
+    android:id="@+id/toolbar" />
+
+
+
+</RelativeLayout>-->

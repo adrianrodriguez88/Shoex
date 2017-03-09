@@ -7,9 +7,9 @@
     android:background="#f4e3ad"
     tools:context="mx.adrianbrito.shoex.ui.user.signinup.Init">
 
-    <include
+    <!--<include
         layout="@layout/toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar" />-->
 
     <ImageView
         android:id="@+id/imgMain"

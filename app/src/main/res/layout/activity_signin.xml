@@ -6,9 +6,9 @@
     android:orientation="vertical">
     <!--tools:context="mx.adrianbrito.shoex.ui.user.signinup.SignIn"-->
 
-    <include
+    <!--<include
         layout="@layout/toolbar"
-        android:id="@+id/toolbar" />
+        android:id="@+id/toolbar" />-->
 
     <ScrollView
         android:id="@+id/scrollview_signin"
