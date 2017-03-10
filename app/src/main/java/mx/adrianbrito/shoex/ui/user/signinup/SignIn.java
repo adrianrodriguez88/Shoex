@@ -1,6 +1,7 @@
 package mx.adrianbrito.shoex.ui.user.signinup;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,14 +52,14 @@ public class SignIn extends AppCompatActivity {
                 try {
                     //new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
 
-                    /*if (formIsValid())
-                        new FetchService().execute(new String[]{txtUser.getText().toString(), txtPassword.getText().toString()});*/
+                    if (formIsValid())
+                        new FetchService().execute(new String[]{txtUser.getText().toString(), txtPassword.getText().toString()});
 
-                    Intent intent =
+                   /* Intent intent =
                             new Intent(mx.adrianbrito.shoex.ui.user.signinup.SignIn.this,
                                     mx.adrianbrito.shoex.ui.catalog.BankSelector.class);
 
-                    startActivity(intent);
+                    startActivity(intent);*/
 
                 }
                 catch(Exception e){
@@ -136,127 +137,123 @@ public class SignIn extends AppCompatActivity {
         });
     }*/
 
+    private class FetchService extends android.os.AsyncTask<String, Void, String> {
+        private ProgressDialog dialog;
 
-
-}
-
- class FetchService extends android.os.AsyncTask<String, Void, String> {
-    /*private ProgressDialog dialog;*/
-
-    @Override
-    protected void onPreExecute(){
-        /*dialog = ProgressDialog.show(MainActivity.this, "",
-                "Recuperando sesión...", true);*/
-        System.out.println("@onPreExecute..");
-    }
-
-    @Override
-    protected String doInBackground(String... params) {
-        System.out.println("@doInBackground..");
-
-        HttpsURLConnection conn = null;
-        BufferedReader reader = null;
-
-        String str = null;
-        int _responseCode = -1;
-
-        try {
-
-            URL url = new URL("https://mi.albo.mx/v1/iop/selfservice");
-
-            System.out.println("@doInBackground.. 1");
-
-            conn = (HttpsURLConnection) url.openConnection();
-
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setRequestProperty("albo-tx", "deeplink@1:send");
-            conn.setRequestProperty("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
-            conn.setRequestProperty("albo-role", "albo::role::common-user");
-
-            conn.setRequestMethod("POST");
-            conn.setDoInput(true);
-            conn.setDoOutput(true);
-
-            JSONObject _data = new JSONObject();
-            JSONObject _payload = new JSONObject();
-
-            _payload.put("email",params[0]);
-            _payload.put("phone",params[1]);
-            _payload.put("cmd","reinstall");
-            _data.put("data", _payload);
-
-            System.out.println("@doInBackground.. 2");
-
-            OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(
-                    new OutputStreamWriter(os, "UTF-8"));
-            writer.write(_data.toString());
-            writer.flush();
-            writer.close();
-            os.close();
-
-            System.out.println("@doInBackground.. 3");
-
-            conn.connect();
-
-            _responseCode = conn.getResponseCode();
-
-            System.out.println("@doInBackground.. 4: responseCode["+_responseCode+"]");
-
-            if (_responseCode >= 200 && _responseCode <= 399){
-                // Read the input stream into a String
-                InputStream inputStream = conn.getInputStream();
-                StringBuffer buffer = new StringBuffer();
-                if (inputStream == null) {
-                    return null;
-                }
-                reader = new BufferedReader(new InputStreamReader(inputStream));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    buffer.append(line + "\n");
-                }
-
-                if (buffer.length() == 0) {
-                    return null;
-                }
-                str = buffer.toString();
-
-                System.out.println(str);
-
-                return str;
-            }
-
-            throw new Exception("The webservice threw exception with HttpStatus["+_responseCode+"]");
+        @Override
+        protected void onPreExecute(){
+            dialog = ProgressDialog.show(SignIn.this, "",
+                    "Cargando...", true);
+            System.out.println("@onPreExecute..");
         }
-        catch (Exception e) {
-            System.out.println("@Exception1: "+e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-        finally {
-            if (conn != null) {
-                conn.disconnect();
+
+        @Override
+        protected String doInBackground(String... params) {
+            System.out.println("@doInBackground..");
+
+            HttpsURLConnection conn = null;
+            BufferedReader reader = null;
+
+            String str = null;
+            int _responseCode = -1;
+
+            try {
+
+                URL url = new URL("https://mi.albo.mx/v1/iop/selfservice");
+
+                System.out.println("@doInBackground.. 1");
+
+                conn = (HttpsURLConnection) url.openConnection();
+
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setRequestProperty("albo-tx", "deeplink@1:send");
+                conn.setRequestProperty("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
+                conn.setRequestProperty("albo-role", "albo::role::common-user");
+
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                JSONObject _data = new JSONObject();
+                JSONObject _payload = new JSONObject();
+
+                _payload.put("email",params[0]);
+                _payload.put("phone",params[1]);
+                _payload.put("cmd","reinstall");
+                _data.put("data", _payload);
+
+                System.out.println("@doInBackground.. 2");
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(_data.toString());
+                writer.flush();
+                writer.close();
+                os.close();
+
+                System.out.println("@doInBackground.. 3");
+
+                conn.connect();
+
+                _responseCode = conn.getResponseCode();
+
+                System.out.println("@doInBackground.. 4: responseCode["+_responseCode+"]");
+
+                if (_responseCode >= 200 && _responseCode <= 399){
+                    // Read the input stream into a String
+                    InputStream inputStream = conn.getInputStream();
+                    StringBuffer buffer = new StringBuffer();
+                    if (inputStream == null) {
+                        return null;
+                    }
+                    reader = new BufferedReader(new InputStreamReader(inputStream));
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        buffer.append(line + "\n");
+                    }
+
+                    if (buffer.length() == 0) {
+                        return null;
+                    }
+                    str = buffer.toString();
+
+                    System.out.println(str);
+
+                    return str;
+                }
+
+                throw new Exception("The webservice threw exception with HttpStatus["+_responseCode+"]");
             }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (final IOException e) {
-                    System.out.println("@Exception2: "+e.getMessage());
-                    e.printStackTrace();
+            catch (Exception e) {
+                System.out.println("@Exception1: "+e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
+            finally {
+                if (conn != null) {
+                    conn.disconnect();
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (final IOException e) {
+                        System.out.println("@Exception2: "+e.getMessage());
+                        e.printStackTrace();
+                    }
                 }
             }
         }
-    }
 
-    @Override
-    protected void onPostExecute(String s) {
-        System.out.println("@onPostExecute..");
-        super.onPostExecute(s);
-        /*dialog.dismiss();
-        Log.i("json", s+"");*/
-        try{
-            JSONObject JSONResponse = new JSONObject(s);
+        @Override
+        protected void onPostExecute(String s) {
+            System.out.println("@onPostExecute..");
+            super.onPostExecute(s);
+        dialog.dismiss();
+        /*Log.i("json", s+"");*/
+            try{
+                JSONObject JSONResponse = new JSONObject(s);
 
             /*if (JSONResponse.getJSONObject("data").getString("status").equals("OK")) {
                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -272,9 +269,9 @@ public class SignIn extends AppCompatActivity {
                 return;
             }*/
 
-        }catch(Exception e){
+            }catch(Exception e){
            /* Log.e("PlaceholderFragment", "Error ", e);*/
-        }
+            }
         /*AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Información");
         alertDialog.setMessage("Error al reestablecer la sesión");
@@ -285,7 +282,7 @@ public class SignIn extends AppCompatActivity {
                     }
                 });
         alertDialog.show();*/
-    }
+        }
 
 
     /*@Override
@@ -309,5 +306,10 @@ public class SignIn extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }*/
+    }
+
+
 }
+
+
 
