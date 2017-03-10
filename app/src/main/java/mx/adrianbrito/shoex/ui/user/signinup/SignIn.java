@@ -49,36 +49,10 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    /*java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
-                    _headers.put("Authorization", "key=AIzaSyC4AcCjPMiFqCymqAMNT1QLlMuJZx2pWFM");
+                    //new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
 
-                    org.json.JSONObject _payload = new org.json.JSONObject();
-                    _payload.put("content_available", true);
-                    _payload.put("to", "fyZ5_y6VTI0:APA91bHGI52ORgkoI9hA5qzIrDV8aNmkloymFW1DNg9HVXF7vA1DUJC5xcFNYSahzQIS6Qy0exfXhBjzlwypIOq374icOUSq6PZJQpf_KAp1JjhEA7vaDS-QnrXZPRi7eunPtk_iAkwy");
-                    _payload.put("priority", "high");
-                    _payload.put("notification", new org.json.JSONObject().put("body", "hola").put("title", "titulo").put("badge", 1).put("sound", "default"));
-
-                    org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://gcm-http.googleapis.com/gcm/send", _headers, _payload);
-
-                    System.out.println(_json.toString());*/
-
-                   /* java.util.TreeMap<String, String> _headers = new java.util.TreeMap<String, String>();
-                    _headers.put("albo-tx", "deeplink@1:send");
-                    _headers.put("albo-identity", "back-off.9873892ABB23DFFBA9802717882CADD19901BC91A12C23D332BB99FF");
-                    _headers.put("albo-role", "albo::role::common-user");
-
-                    org.json.JSONObject _payload = new org.json.JSONObject();
-                    _payload.put("email", "a_brito@outlook.com");
-                    _payload.put("phone", "9818187588");
-                    _payload.put("cmd", "reinstall");
-
-                    org.json.JSONObject _json = ServicesManager.getInstance().getHttpService().post("https://mi.albo.mx/v1/iop/selfservice", _headers, _payload);*/
-
-                    /*intelifin.frwk.core.services.impl.HttpService obj = new intelifin.frwk.core.services.impl.HttpService();
-
-                    obj.post(new String[]{"a_brito@outlook.com", "9818187588"});*/
-
-                    //android.os.AsyncTask _async = new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
+                    /*if (formIsValid())
+                        new FetchService().execute(new String[]{txtUser.getText().toString(), txtPassword.getText().toString()});*/
 
                     Intent intent =
                             new Intent(mx.adrianbrito.shoex.ui.user.signinup.SignIn.this,
@@ -92,6 +66,60 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean formIsValid() {
+        if (txtUser.getText().toString().equals("")){
+            //throw alert
+            showAlert("Introduce tu usuario");
+            return false;
+        }
+
+        if (txtPassword.getText().toString().equals("")){
+            //throw alert
+            showAlert("Introduce tu contraseña");
+            return false;
+        }
+
+        return true;
+    }
+
+    public void showAlert(String _text){
+        android.app.AlertDialog.Builder alertDialogBuilder =
+                new android.app.AlertDialog.Builder(this);//new android.app.AlertDialog.Builder(context);
+
+        // set title
+        alertDialogBuilder.setTitle(_text);
+
+        // set dialog message
+        alertDialogBuilder
+                //.setMessage(_text)
+                .setCancelable(false)
+                .setNeutralButton("Ok",new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(android.content.DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                })
+                /*.setPositiveButton("Yes",new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(android.content.DialogInterface dialog, int id) {
+                        // if this button is clicked, close
+                        // current activity
+                        SignIn.this.finish();
+                    }
+                })
+                .setNegativeButton("No",new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(android.content.DialogInterface dialog, int id) {
+                        // if this button is clicked, just close
+                        // the dialog box and do nothing
+                        dialog.cancel();
+                    }
+                })*/;
+
+        // create alert dialog
+        android.app.AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 
     /*public void initToolbar() {
@@ -119,10 +147,12 @@ public class SignIn extends AppCompatActivity {
     protected void onPreExecute(){
         /*dialog = ProgressDialog.show(MainActivity.this, "",
                 "Recuperando sesión...", true);*/
+        System.out.println("@onPreExecute..");
     }
 
     @Override
     protected String doInBackground(String... params) {
+        System.out.println("@doInBackground..");
 
         HttpsURLConnection conn = null;
         BufferedReader reader = null;
@@ -133,6 +163,8 @@ public class SignIn extends AppCompatActivity {
         try {
 
             URL url = new URL("https://mi.albo.mx/v1/iop/selfservice");
+
+            System.out.println("@doInBackground.. 1");
 
             conn = (HttpsURLConnection) url.openConnection();
 
@@ -153,6 +185,8 @@ public class SignIn extends AppCompatActivity {
             _payload.put("cmd","reinstall");
             _data.put("data", _payload);
 
+            System.out.println("@doInBackground.. 2");
+
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
@@ -161,7 +195,13 @@ public class SignIn extends AppCompatActivity {
             writer.close();
             os.close();
 
+            System.out.println("@doInBackground.. 3");
+
             conn.connect();
+
+            _responseCode = conn.getResponseCode();
+
+            System.out.println("@doInBackground.. 4: responseCode["+_responseCode+"]");
 
             if (_responseCode >= 200 && _responseCode <= 399){
                 // Read the input stream into a String
@@ -187,7 +227,7 @@ public class SignIn extends AppCompatActivity {
                 return str;
             }
 
-            throw new Exception("The execution should not be here");
+            throw new Exception("The webservice threw exception with HttpStatus["+_responseCode+"]");
         }
         catch (Exception e) {
             System.out.println("@Exception1: "+e.getMessage());
@@ -211,6 +251,7 @@ public class SignIn extends AppCompatActivity {
 
     @Override
     protected void onPostExecute(String s) {
+        System.out.println("@onPostExecute..");
         super.onPostExecute(s);
         /*dialog.dismiss();
         Log.i("json", s+"");*/
