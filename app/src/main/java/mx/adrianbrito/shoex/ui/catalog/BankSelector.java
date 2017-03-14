@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class BankSelector extends AppCompatActivity {
     private TextView txtTitle;
     private View viewSeparator;
     private TextView txtRoundImage;
+    private ImageView img;
+
 
     private RecyclerView recyclerView;
     private ArrayList<Bank> listBanks;
@@ -30,7 +33,8 @@ public class BankSelector extends AppCompatActivity {
 
         txtTitle = (TextView) findViewById(R.id.txtTitle);
         viewSeparator = findViewById(R.id.viewSeparator);
-        txtRoundImage = (TextView) findViewById(R.id.txtRoundImage);
+        //txtRoundImage = (TextView) findViewById(R.id.txtRoundImage);
+        img = (ImageView) findViewById(R.id.imgRoundImage);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         recyclerView.setHasFixedSize(true);
@@ -40,7 +44,7 @@ public class BankSelector extends AppCompatActivity {
         listBanks = new ArrayList<>();
 
         for (int i=0; i<50; i++){
-            listBanks.add(new Bank(i+"", "Descripcion "+i, "http://archivo.eluniversal.com.mx/img/2013/03/Gra/CamilaSodi3265DE.jpg"));
+            listBanks.add(new Bank(i+"", "Descripcion "+i, "http://tusimagenesde.com/wp-content/uploads/2016/05/batman-logo-2.png"));
         }
 
         BankAdapter adapter = new BankAdapter(listBanks);

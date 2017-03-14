@@ -30,8 +30,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@+id/txtRoundImage"
-            android:layout_toRightOf="@+id/txtRoundImage"
+            android:layout_toEndOf="@+id/imgRoundImage"
+            android:layout_toRightOf="@+id/imgRoundImage"
             android:text="Generic Title"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -43,15 +43,15 @@
             android:id="@+id/viewSeparator"
             android:layout_width="match_parent"
             android:layout_height="1sp"
-            android:layout_below="@+id/txtRoundImage"
+            android:layout_below="@+id/imgRoundImage"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/txtRoundImage"
+            android:layout_toRightOf="@+id/imgRoundImage"
             android:background="@color/colorAccent"
             />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/txtRoundImage"
             android:layout_width="55dp"
             android:layout_height="55dp"
@@ -61,7 +61,17 @@
             android:textSize="24sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" />-->
+
+        <ImageView
+            android:id="@+id/imgRoundImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/round_imageview"/>
 
     </RelativeLayout>
 

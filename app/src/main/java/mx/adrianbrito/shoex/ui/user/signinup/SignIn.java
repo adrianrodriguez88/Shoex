@@ -52,14 +52,14 @@ public class SignIn extends AppCompatActivity {
                 try {
                     //new FetchService().execute(new String[]{"a_brito@outlook.com", "9818187588"});
 
-                    if (formIsValid())
-                        new FetchService().execute(new String[]{txtUser.getText().toString(), txtPassword.getText().toString()});
+                    /*if (formIsValid())
+                        new FetchService().execute(new String[]{txtUser.getText().toString(), txtPassword.getText().toString()});*/
 
-                   /* Intent intent =
+                   Intent intent =
                             new Intent(mx.adrianbrito.shoex.ui.user.signinup.SignIn.this,
                                     mx.adrianbrito.shoex.ui.catalog.BankSelector.class);
 
-                    startActivity(intent);*/
+                    startActivity(intent);
 
                 }
                 catch(Exception e){

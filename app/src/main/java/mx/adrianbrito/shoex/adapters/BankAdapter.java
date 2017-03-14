@@ -1,6 +1,8 @@
 package mx.adrianbrito.shoex.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,13 +26,19 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankViewHolder
     public static class BankViewHolder extends RecyclerView.ViewHolder {
         CardView cv;
         TextView txtTitle, txtRoundImage;
+        ImageView img;
 
         BankViewHolder(View view){
             super(view);
 
             cv = (CardView) view.findViewById(R.id.activity_bankselector);
             txtTitle = (TextView) view.findViewById(R.id.txtTitle);
-            txtRoundImage = (TextView) view.findViewById(R.id.txtRoundImage);
+            /*txtRoundImage = (TextView) view.findViewById(R.id.txtRoundImage);*/
+            img = (ImageView) view.findViewById(R.id.imgRoundImage);
+        }
+
+        public void updateBitmap(Bitmap bm){
+            img.setImageBitmap(bm);
         }
     }
 
@@ -56,111 +64,78 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankViewHolder
     @Override
     public void onBindViewHolder(BankViewHolder bankViewHolder, int i){
         bankViewHolder.txtTitle.setText(listBanks.get(i).getDescription());
-        bankViewHolder.txtRoundImage.setText(listBanks.get(i).getImg());
+        //bankViewHolder.txtRoundImage.setText(listBanks.get(i).getImg());
+
+        //bankViewHolder.img.setImageURI(android.net.Uri.parse(listBanks.get(i).getImg()));
+        //new ImageDownloader(BankAdapter.this).execute(new String[]{listBanks.get(i).getImg()});
+        new ImageDownloader(bankViewHolder).execute(new String[]{listBanks.get(i).getImg()});
+
+        /*android.net.Uri uri = android.net.Uri.parse(listBanks.get(i).getImg());
+
+        Bitmap bm = BitmapFactory.decodeFile(uri.getPath());
+        bankViewHolder.img.setImageBitmap(bm);*/
     }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView){
         super.onAttachedToRecyclerView(recyclerView);
     }
-}
 
 
-//=========
+    public class ImageDownloader extends android.os.AsyncTask<String, String, Bitmap> {
 
-/*public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankViewHolder> implements View.OnClickListener {
+        private BankViewHolder parentActivity;
 
-    private View.OnClickListener listener;
 
-    @Override
-    public BankViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_bankselector, viewGroup, false);
+        public ImageDownloader(BankViewHolder parentActivity) {
+            super();
 
-        view.setOnClickListener(this);
+            this.parentActivity = parentActivity;
+        }
 
-        BankViewHolder bvh = new BankViewHolder(view);
+        protected Bitmap doInBackground(String... args) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream((java.io.InputStream)new java.net.URL(args[0]).getContent());
+                return bitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-        return bvh;
-    }
-
-    public void setOnClickListener(View.OnClickListener listener){
-        this.listener = listener;
-    }
-
-    @Override
-    public void onClick(View view){
-        if (listener != null)
-            listener.onClick(view);
-    }
-
-}*/
-
-//=========
-
-/*public class BankAdapter extends RecyclerView.Adapter<BankAdapter.BankViewHolder> {
-
-    private List<mx.adrianbrito.shoex.domain.Bank> banks;
-    Context mContext;
-
-    public BankAdapter(List<mx.adrianbrito.shoex.domain.Bank> banks*//*, Context context*//*) {
-        this.banks = banks;
-        *//*this.mContext = context;*//*
-    }
-
-    public static class BankViewHolder extends RecyclerView.ViewHolder {
-
-        TextView txtTitle, txtRoundImage;
-
-        public BankViewHolder(View view) {
-            super(view);
-
-            txtRoundImage = (TextView) view.findViewById(R.id.txtRoundImage);
-            txtTitle = (TextView) view.findViewById(R.id.txtTitle);
+        protected void onPostExecute(Bitmap image) {
+            if(image != null){
+                parentActivity.updateBitmap(image);
+            }
         }
     }
 
-    @Override
-    public BankViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView;
+    /*public class ImageDownloader extends android.os.AsyncTask<String, String, Bitmap> {
 
-        itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_bankselector, parent, false);
+        private BankAdapter parentActivity;
 
-        return new BankViewHolder(itemView);
-    }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
+        public ImageDownloader(BankAdapter parentActivity) {
+            super();
 
-    @Override
-    public void onBindViewHolder(final BankViewHolder holder, int position) {
-        final mx.adrianbrito.shoex.domain.Bank bank = banks.get(position);
+            this.parentActivity = parentActivity;
+        }
 
-        *//*Picasso
-                .with(mContext)
-                .load(bank.getImg())
-                .placeholder(R.drawable.image_placeholder)
-                .error(R.drawable.image_placeholder)
-                .into(holder.imgBank);*//*
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("CardFriend", "Friend id: " + bank.getUuid());
+        protected Bitmap doInBackground(String... args) {
+            try {
+                Bitmap bitmap = BitmapFactory.decodeStream((java.io.InputStream)new java.net.URL(args[0]).getContent());
+                return bitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+            return null;
+        }
 
-        holder.txtTitle.setText(bank.getDescription());
-        holder.txtRoundImage.setText(bank.getImg());
-    }
+        protected void onPostExecute(Bitmap image) {
+            if(image != null){
+                parentActivity.updateBitmap(image);
+            }
+        }
+    }*/
+}
 
-    @Override
-    public int getItemCount() {
-        if (this.banks == null) return 0;
-
-        return this.banks.size();
-    }
-
-}*/
