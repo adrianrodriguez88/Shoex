@@ -12,6 +12,7 @@
         android:id="@+id/toolbar" />-->
 
     <ImageView
+        android:layout_centerInParent="true"
         android:id="@+id/imgMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
