@@ -34,7 +34,8 @@ public class Init extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =
                         new Intent(mx.adrianbrito.shoex.ui.user.signinup.Init.this,
-                                mx.adrianbrito.shoex.ui.user.signinup.SignIn.class);
+                                //mx.adrianbrito.shoex.ui.user.signinup.SignIn.class);
+                                mx.adrianbrito.shoex.ui.user.signinup.PhoneValidation.class);
 
                 startActivity(intent);
             }
