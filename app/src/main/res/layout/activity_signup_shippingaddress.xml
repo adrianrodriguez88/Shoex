@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup_shippingaddress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/greyHeaderBackground"
+        android:id="@+id/viewHeaderBackground"/>
+
+    <!--//Header description-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escribe el domicilio al que enviaremos \ntu tarjeta albo"
+        android:id="@+id/lblDescription"
+        android:textColor="@color/greyHeaderLabel"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp" />
+
+    <!--//Top separator-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/lblDescription"
+        android:layout_marginTop="20dp"
+        android:background="@color/rowSeparators"
+        android:id="@+id/viewTopSeparator"/>
+
+    <!-- 1er row -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/viewTopSeparator"
+        android:id="@+id/row1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/france"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:id="@+id/imgZip"/>
+
+            <!--//input EditText-->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtZip"
+                android:hint="Código postal"
+                android:inputType="number"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:textCursorDrawable="@null"/>
+
+            </LinearLayout>
+
+        <!--//Bottom separator-->
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="70dp"
+            android:background="@color/rowSeparators"
+            android:id="@+id/viewBottomSeparator1"/>
+
+    </LinearLayout>
+
+    <!-- 2do row -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/row1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/france"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/imgState"/>
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--//input Entidad-->
+                <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtState"
+                    android:hint="Entidad"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/rowSeparators"
+                    android:id="@+id/viewStateSeparator"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--//input Ciudad-->
+                <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtCity"
+                    android:hint="Ciudad"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/rowSeparators"
+                    android:id="@+id/viewCitySeparator"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--//Bottom separator-->
+        <!--<View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="200dp"
+            android:background="@color/rowSeparators"
+            android:id="@+id/viewBottomSeparator2"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<!--
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup_shippingaddress"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/greyHeaderBackground"
+        android:id="@+id/viewHeaderBackground"/>
+
+    &lt;!&ndash;//Header description&ndash;&gt;
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Hemos enviado un código al"
+android:id="@+id/lblDescription"
+android:textColor="@color/greyHeaderLabel"
+android:textSize="14sp"
+android:layout_marginTop="25dp"
+android:drawableLeft="@android:drawable/sym_action_email"
+android:drawablePadding="20dp"
+android:layout_alignParentTop="true"
+android:layout_marginRight="25dp"
+android:layout_marginLeft="25dp" />
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="+52 1234567890"
+android:id="@+id/lblPhone"
+android:textColor="@color/greyHeaderLabel"
+android:textSize="14sp"
+android:layout_marginTop="45dp"
+android:layout_alignParentTop="true"
+android:layout_marginRight="25dp"
+android:layout_marginLeft="75dp" />
+
+    &lt;!&ndash;//Top separator&ndash;&gt;
+<View
+android:layout_width="match_parent"
+android:layout_height="1dp"
+android:layout_below="@+id/lblDescription"
+android:layout_marginTop="20dp"
+android:background="@color/rowSeparators"
+android:id="@+id/viewTopSeparator"/>
+
+
+    &lt;!&ndash;//input EditText&ndash;&gt;
+<EditText
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/txtSMS"
+android:hint="Ingresa tu código"
+android:inputType="number"
+android:textSize="18sp"
+android:layout_marginTop="80dp"
+android:layout_marginLeft="20dp"
+android:layout_marginRight="10dp"
+android:textCursorDrawable="@null"
+android:drawableLeft="@android:drawable/sym_action_email"
+android:drawablePadding="20dp"/>
+
+    &lt;!&ndash;//Bottom separator&ndash;&gt;
+<View
+android:layout_width="wrap_content"
+android:layout_height="1dp"
+android:layout_below="@id/viewTopSeparator"
+android:layout_marginTop="50dp"
+android:layout_marginLeft="70dp"
+android:background="@color/rowSeparators"
+android:id="@+id/viewBottomSeparator"/>
+
+
+
+    </RelativeLayout>-->
+
+
+
+
+

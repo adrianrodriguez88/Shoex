@@ -10,7 +10,7 @@ public class SMSValidation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_smsvalidation);
+        setContentView(R.layout.activity_signup_smsvalidation);
         this.initToolbar();
     }
 
