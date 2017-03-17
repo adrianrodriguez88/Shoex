@@ -80,7 +80,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="70dp"
             android:background="@color/rowSeparators"
-            android:id="@+id/viewBottomSeparator1"/>
+            android:id="@+id/viewZipSeparator"/>
 
     </LinearLayout>
 
@@ -90,6 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:id="@+id/row2"
         android:layout_below="@+id/row1">
 
         <LinearLayout
@@ -163,6 +164,180 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- 3er row -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/row3"
+            android:layout_below="@+id/row2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:background="@color/blueIndigo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"/>
+
+                <!--//input EditText-->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtCountry"
+                    android:hint="País"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+            </LinearLayout>
+
+            <!--//Bottom separator-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/rowSeparators"
+                android:id="@+id/viewCountrySeparator"/>
+
+        </LinearLayout>
+
+        <!-- 4to row -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/row4"
+            android:layout_below="@+id/row3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:background="@color/blueIndigo"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"/>
+
+                <!--//input EditText-->
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTown"
+                    android:hint="Colonia"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+            </LinearLayout>
+
+            <!--//Bottom separator-->
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/rowSeparators"
+                android:id="@+id/viewTownSeparator"/>
+
+        </LinearLayout>
+
+    <!-- 5do row -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/row5"
+        android:layout_below="@+id/row4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@color/blueIndigo"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"/>
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--//input Entidad-->
+                <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtNumExt"
+                    android:hint="No. Exterior"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/rowSeparators"
+                    android:id="@+id/viewNumExtSeparator"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--//input Ciudad-->
+                <EditText
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtNumInt"
+                    android:hint="No. Interior"
+                    android:inputType="text"
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:textCursorDrawable="@null"/>
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/rowSeparators"
+                    android:id="@+id/viewNumIntSeparator"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
         <!--//Bottom separator-->
         <!--<View
