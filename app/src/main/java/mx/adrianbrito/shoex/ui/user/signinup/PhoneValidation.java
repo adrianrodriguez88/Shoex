@@ -12,7 +12,29 @@ public class PhoneValidation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phonevalidation);
+        this.initToolbar();
 
 
+
+    }
+
+    private void initToolbar(){
+        getSupportActionBar().setTitle("Registro 3 de 5");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        /*toolbar.setNavigationIcon(R.drawable.ic_toolbar_backarrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SignIn.super.finish();
+            }
+        });*/
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

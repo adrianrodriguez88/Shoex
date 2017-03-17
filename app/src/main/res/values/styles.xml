@@ -8,6 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="windowActionBar">false</item>-->
         <!--<item name="windowNoTitle">true</item>-->
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">#FFFFFF</item> <!-- color de líneas de EditText (Sin esto se ponen rosadas) -->
+        <item name="colorControlHighlight">#FA1008</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
