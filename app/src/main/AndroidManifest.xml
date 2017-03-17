@@ -39,7 +39,8 @@
         <activity
             android:name=".ui.catalog.BankSelector"
             android:label="Banks" />
-        <activity android:name=".ui.user.signinup.PhoneValidation"></activity>
+        <activity android:name=".ui.user.signinup.PhoneValidation" />
+        <activity android:name=".ui.user.signinup.SMSValidation"></activity>
     </application>
 
 </manifest>

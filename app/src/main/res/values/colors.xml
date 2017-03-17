@@ -8,4 +8,5 @@
     <color name="greyHeaderLabel">#9798A0</color>
     <color name="greyHeaderBackground">#FAFAFA</color>
     <color name="greyBoldLabel">#AAABB1</color>
+    <color name="blueIndigo">#3E4CA5</color>
 </resources>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_smsvalidation"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFFFFF">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/greyHeaderBackground"
+        android:id="@+id/viewHeaderBackground"/>
+
+    <!--//Header description-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hemos enviado un código al"
+        android:id="@+id/lblDescription"
+        android:textColor="@color/greyHeaderLabel"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+52 1234567890"
+        android:id="@+id/lblPhone"
+        android:textColor="@color/greyHeaderLabel"
+        android:textSize="14sp"
+        android:layout_marginTop="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="75dp" />
+
+    <!--//Top separator-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/lblDescription"
+        android:layout_marginTop="20dp"
+        android:background="@color/rowSeparators"
+        android:id="@+id/viewTopSeparator"/>
+
+    <!--//input EditText-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSMS"
+        android:hint="Ingresa tu código"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textCursorDrawable="@null"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="20dp"/>
+
+    <!--//Bottom separator-->
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_below="@id/viewTopSeparator"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="70dp"
+        android:background="@color/rowSeparators"
+        android:id="@+id/viewBottomSeparator"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/viewBottomSeparator">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿No recibiste el SMS?"
+            android:id="@+id/lblResend1"
+            android:textColor="@color/greyHeaderLabel"
+            android:textSize="12sp"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="75dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reenviar"
+            android:id="@+id/lblResend2"
+            android:textColor="@color/blueIndigo"
+            android:textSize="12sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
