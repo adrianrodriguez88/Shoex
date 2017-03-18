@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup_contract"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/blueIndigo"
+        android:text="@string/signup_contract_title"
+        android:id="@+id/lblTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="330dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/lblTitle"
+        android:textSize="14sp"
+        android:text="@string/signup_contract_text"
+        android:id="@+id/lblText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/lblText"
+        android:textSize="14sp"
+        android:text="@string/signup_contract_terms"
+        android:id="@+id/lblTerms" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:textColor="@color/blueIndigo"
+        android:text="FINALIZAR"/>
+
+</RelativeLayout>

@@ -13,4 +13,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="signup_contract_title">Sobre tu cuenta albo</string>
+    <string name="signup_contract_text">Albo es una app que te permite administrar tu dinero desde el móvil. Con albo recibes una tarjeta MasterCard internacional, válida para pagos en comercios, compras en línea, retiros en cajeros y una app para controlar tus finanzas. \n\nPara esto nos aliamos con Cuallix SOFOM, entidad transmisora de dinero supervisada por la Comision Nacional Bancaria y de Valores (CNBV) y quien resguarda el dinero depositado en tarjetas albo. \n\nQueremos ser transparentes por lo que evitamos las comisiones confusas, cobrando una suscripción mensual de $35 pesos MXN. \n\nAl hacer click en Finalizar, aceptas haber leído y estar de acuerdo con nuestra</string>
+    <string name="signup_contract_terms">Política de Privacidad y Términos de Uso</string>
 </resources>
