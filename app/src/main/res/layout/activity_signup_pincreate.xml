@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup_pincreate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/greyHeaderBackground"
+        android:id="@+id/viewHeaderBackground"/>
+
+    <!--//Header description-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configura un PIN de seguridad. \nLo usarás al enviar dinero, abrir la app \ny en cajeros"
+        android:id="@+id/lblDescription"
+        android:textColor="@color/greyHeaderLabel"
+        android:textSize="14sp"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@android:drawable/sym_action_email"
+        android:drawablePadding="20dp"
+        android:lineSpacingExtra="2sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp" />
+
+    <!--//Top separator-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/lblDescription"
+        android:layout_marginTop="20dp"
+        android:background="@color/rowSeparators"
+        android:id="@+id/viewTopSeparator"/>
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/viewTopSeparator"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/colorAccent"
+                    android:id="@+id/imgPin1"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorAccent"
+                    android:id="@+id/imgPin2"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorAccent"
+                    android:id="@+id/imgPin3"/>
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorAccent"
+                    android:id="@+id/imgPin4"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="5dp"
+                android:text="Ingresa tu PIN"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

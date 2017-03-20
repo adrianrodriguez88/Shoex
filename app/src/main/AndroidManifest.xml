@@ -42,7 +42,8 @@
         <activity android:name=".ui.user.signinup.PhoneValidation" />
         <activity android:name=".ui.user.signinup.SMSValidation" />
         <activity android:name=".ui.user.signinup.ShippingAddress" />
-        <activity android:name=".ui.user.signinup.Contract"></activity>
+        <activity android:name=".ui.user.signinup.Contract" />
+        <activity android:name=".ui.user.signinup.PinCreate"></activity>
     </application>
 
 </manifest>
