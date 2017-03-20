@@ -19,7 +19,7 @@ public class PhoneValidation extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        getSupportActionBar().setTitle("Registro 3 de 5");
+        getSupportActionBar().setTitle("Registro 3 de 6");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 

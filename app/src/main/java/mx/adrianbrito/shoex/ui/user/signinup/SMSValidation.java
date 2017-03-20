@@ -15,7 +15,7 @@ public class SMSValidation extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        getSupportActionBar().setTitle("Registro 4 de 5");
+        getSupportActionBar().setTitle("Registro 4 de 6");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

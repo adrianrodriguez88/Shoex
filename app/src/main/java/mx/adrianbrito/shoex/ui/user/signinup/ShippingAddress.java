@@ -15,7 +15,7 @@ public class ShippingAddress extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        getSupportActionBar().setTitle("Registro 5 de 7");
+        getSupportActionBar().setTitle("Registro 5 de 6");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
