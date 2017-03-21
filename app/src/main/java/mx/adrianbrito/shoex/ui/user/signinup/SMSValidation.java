@@ -47,6 +47,9 @@ public class SMSValidation extends AppCompatActivity {
 
                 startActivity(intent);
                 break;
+            default:
+                super.finish();
+                break;
         }
         return true;
     }

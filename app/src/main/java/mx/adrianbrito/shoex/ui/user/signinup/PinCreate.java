@@ -50,6 +50,9 @@ public class PinCreate extends AppCompatActivity {
             case R.id.action_menu_next:
                 System.out.println("Next clicked..");
                 break;
+            default:
+                super.finish();
+                break;
         }
         return true;
     }

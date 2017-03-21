@@ -57,6 +57,12 @@ public class PhoneValidation extends AppCompatActivity {
 
                 startActivity(intent);
                 break;
+            case R.id.home:
+                System.out.println("home button clicked..");
+                break;
+            default:
+                super.finish();
+                break;
         }
         return true;
     }
