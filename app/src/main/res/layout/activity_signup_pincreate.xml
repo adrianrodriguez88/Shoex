@@ -99,5 +99,13 @@
 
     </RelativeLayout>
 
+    <EditText
+        android:layout_width="10dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:inputType="numberPassword"
+        android:textColor="#FFFFFF"
+        android:hint=""/>
+
 </RelativeLayout>
 
