@@ -1,5 +1,6 @@
 package mx.adrianbrito.shoex.ui.user.signinup;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,11 @@ public class PinCreate extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_menu_next:
-                System.out.println("Next clicked..");
+                Intent intent =
+                        new Intent(mx.adrianbrito.shoex.ui.user.signinup.PinCreate.this,
+                                mx.adrianbrito.shoex.ui.user.signinup.Contract.class);
+
+                startActivity(intent);
                 break;
             default:
                 super.finish();
