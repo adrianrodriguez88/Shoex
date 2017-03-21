@@ -47,6 +47,9 @@ public class ShippingAddress extends AppCompatActivity {
 
                 startActivity(intent);
                 break;
+            default:
+                super.finish();
+                break;
         }
         return true;
     }
