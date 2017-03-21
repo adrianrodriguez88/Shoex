@@ -57,7 +57,8 @@ public class SignIn extends AppCompatActivity {
 
                    Intent intent =
                             new Intent(mx.adrianbrito.shoex.ui.user.signinup.SignIn.this,
-                                    mx.adrianbrito.shoex.ui.catalog.BankSelector.class);
+                                    mx.adrianbrito.shoex.ui.user.signinup.PhoneValidation.class);
+                                    //mx.adrianbrito.shoex.ui.catalog.BankSelector.class);
 
                     startActivity(intent);
 
