@@ -17,7 +17,7 @@ android:background="#FFFFFF">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hemos enviado un código al"
+        android:text="Hemos enviado un código al \n+52 9810000000"
         android:id="@+id/lblDescription"
         android:textColor="@color/greyHeaderLabel"
         android:textSize="14sp"
@@ -28,7 +28,7 @@ android:background="#FFFFFF">
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+52 1234567890"
@@ -38,7 +38,7 @@ android:background="#FFFFFF">
         android:layout_marginTop="45dp"
         android:layout_alignParentTop="true"
         android:layout_marginRight="25dp"
-        android:layout_marginLeft="75dp" />
+        android:layout_marginLeft="75dp" />-->
 
     <!--//Top separator-->
     <View
@@ -74,33 +74,41 @@ android:background="#FFFFFF">
         android:background="@color/rowSeparators"
         android:id="@+id/viewBottomSeparator"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/viewBottomSeparator">
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/viewBottomSeparator"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¿No recibiste el SMS?"
-            android:id="@+id/lblResend1"
-            android:textColor="@color/greyHeaderLabel"
-            android:textSize="12sp"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="75dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reenviar"
-            android:id="@+id/lblResend2"
-            android:textColor="@color/blueIndigo"
-            android:textSize="12sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No recibiste el SMS?"
+                android:id="@+id/lblResend1"
+                android:textColor="@color/greyHeaderLabel"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reenviar"
+                android:id="@+id/lblResend2"
+                android:textColor="@color/blueIndigo"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

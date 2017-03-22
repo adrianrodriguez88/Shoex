@@ -25,10 +25,11 @@
         android:drawableLeft="@android:drawable/sym_action_email"
         android:drawablePadding="20dp"
         android:lineSpacingExtra="2sp"
-        android:layout_centerHorizontal="true"
+
         android:layout_alignParentTop="true"
         android:layout_marginRight="25dp"
         android:layout_marginLeft="25dp" />
+        <!--android:layout_centerHorizontal="true"-->
 
     <!--//Top separator-->
     <View
