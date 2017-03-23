@@ -17,12 +17,6 @@ import mx.adrianbrito.shoex.domain.Bank;
 
 public class BankSelector extends AppCompatActivity {
 
-    private TextView txtTitle;
-    private View viewSeparator;
-    private TextView txtRoundImage;
-    private ImageView img;
-
-
     private RecyclerView recyclerView;
     private ArrayList<Bank> listBanks;
 
@@ -31,10 +25,6 @@ public class BankSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview);
 
-        txtTitle = (TextView) findViewById(R.id.txtTitle);
-        viewSeparator = findViewById(R.id.viewSeparator);
-        //txtRoundImage = (TextView) findViewById(R.id.txtRoundImage);
-        img = (ImageView) findViewById(R.id.imgRoundImage);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         recyclerView.setHasFixedSize(true);
