@@ -14,6 +14,10 @@
           <option name="url" value="https://source.developers.google.com/p/albo-mx-apps/r/albo-mx-app-android" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://adrianrodriguez88@bitbucket.org/edwar_novelo/albo-android.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/Documents/Intellij" />
